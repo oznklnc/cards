@@ -3,7 +3,7 @@ package com.eazybytes.cards.constants;
 import lombok.experimental.UtilityClass;
 
 @UtilityClass
-public class CardConstants {
+public class CardsConstants {
 
     public static final String CREDIT_CARD = "Credit Card";
     public static final int NEW_CARD_LIMIT = 1_00_000;

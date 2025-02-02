@@ -1,8 +1,8 @@
-package com.eazybytes.accounts.handler;
+package com.eazybytes.cards.handler;
 
-import com.eazybytes.accounts.dto.ErrorResponseDto;
-import com.eazybytes.accounts.exception.CustomerAlreadyExistsException;
-import com.eazybytes.accounts.exception.ResourceNotFoundException;
+import com.eazybytes.cards.dto.ErrorResponseDto;
+import com.eazybytes.cards.exception.CardsAlreadyExistsException;
+import com.eazybytes.cards.exception.ResourceNotFoundException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 @ControllerAdvice
-public class AccountsExceptionHandler extends ResponseEntityExceptionHandler {
+public class CardsExceptionHandler extends ResponseEntityExceptionHandler {
 
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
@@ -43,7 +43,7 @@ public class AccountsExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponseDto> handleGlobalException(Exception exception,
-                                                            WebRequest webRequest) {
+                                                                  WebRequest webRequest) {
         ErrorResponseDto errorResponseDto = new ErrorResponseDto(
                 webRequest.getDescription(false),
                 HttpStatus.INTERNAL_SERVER_ERROR,
@@ -55,8 +55,8 @@ public class AccountsExceptionHandler extends ResponseEntityExceptionHandler {
                 .body(errorResponseDto);
     }
 
-    @ExceptionHandler(CustomerAlreadyExistsException.class)
-    public ResponseEntity<ErrorResponseDto> handleCustomerAlreadyExistsException(CustomerAlreadyExistsException exception,
+    @ExceptionHandler(CardsAlreadyExistsException.class)
+    public ResponseEntity<ErrorResponseDto> handleCustomerAlreadyExistsException(CardsAlreadyExistsException exception,
                                                                                  WebRequest webRequest) {
         ErrorResponseDto errorResponseDto = new ErrorResponseDto(
                 webRequest.getDescription(false),
